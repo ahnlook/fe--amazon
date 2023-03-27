@@ -1,3 +1,5 @@
+import $ from './$.js'
+
 const openSideBar = (...element) => {
   const [sideMenu, openButton] = element
 
@@ -9,7 +11,7 @@ const openSideBar = (...element) => {
   })
 }
 
-const hideSideBar = (...element) => {
+const closeSideBar = (...element) => {
   const [sideMenu, openButton] = element
   const closeButton = document.querySelector('.side-menu__close')
   const body = document.querySelector('body')
@@ -43,7 +45,7 @@ const closeAllItems = (...element) => {
   })
 }
 
-const moveMain = (...element) => {
+const navigateToMain = (...element) => {
   const [sideMain, sideMenuDetail] = element
   const backMainButton = document.querySelector('.back__main')
   
@@ -53,8 +55,6 @@ const moveMain = (...element) => {
     sideMenuDetail.style.display = 'none'
   })
 }
-
-const $ = Selector => document.querySelector(Selector)
 
 const actSideBar = () => {
   const sideMenu = $('.side-menu')
@@ -66,10 +66,10 @@ const actSideBar = () => {
   const allItemsButton = $('.side-menu__show-button')
 
   openSideBar(sideMenu, openButton)
-  hideSideBar(sideMenu, openButton)
+  closeSideBar(sideMenu, openButton)
   openAllItems(allItems, allItemsButton)
   closeAllItems(simpleItemsButton, allItems)
-  moveMain(sideMain, sideMenuDetail)
+  navigateToMain(sideMain, sideMenuDetail)
 }
 
 actSideBar()

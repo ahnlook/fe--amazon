@@ -60,7 +60,7 @@ table {
 }
 .carousel-viewport {
   transform: translateX(0);
-  transition: transform 1s;
+  transition: transform 0.6s;
 }
 .carousel-viewport ol {
   display: flex;

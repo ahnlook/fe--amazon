@@ -1,16 +1,22 @@
 import $ from './$.js'
+
 class Hero {
+  #directionButton
   #viewport
-  #imageSize
   #viewportPosition
+  #IMAGE_SIZE
   
   init () {
-    const directionBtn = $('.carousel-directionArrows')
-    this.#viewport = directionBtn.previousElementSibling.firstElementChild
-    this.#imageSize = 1500
+    this.#directionButton = $('.carousel-directionArrows')
+    this.#viewport = this.#directionButton.previousElementSibling.firstElementChild
     this.#viewportPosition = 0
+    this.#IMAGE_SIZE = 1500
 
-    directionBtn.addEventListener('click', ({ target }) => {
+    this.onDirectButtonClick()
+  }
+
+  onDirectButtonClick () {
+    this.#directionButton.addEventListener('click', ({ target }) => {
       const [leftButton, rightButton] = 
         ['.carousel-left', '.carousel-right'].map(className => 
           target.closest(className)
@@ -21,13 +27,13 @@ class Hero {
     })  
   }
   
-  slidePrev() {
-    this.#viewportPosition += this.#imageSize
+  slidePrev () {
+    this.#viewportPosition += this.#IMAGE_SIZE
     this.#viewport.style.transform = `translateX(${this.#viewportPosition}px)`
   }
 
-  slideNext() {
-    this.#viewportPosition -= this.#imageSize
+  slideNext () {
+    this.#viewportPosition -= this.#IMAGE_SIZE
     this.#viewport.style.transform = `translateX(${this.#viewportPosition}px)`
   }
 }
